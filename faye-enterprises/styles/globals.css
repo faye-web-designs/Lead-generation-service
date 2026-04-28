@@ -1,0 +1,173 @@
+@import url('https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;600;700;800;900&family=Figtree:wght@300;400;500;600;700&display=swap');
+
+:root {
+  --bg:        #050B18;
+  --bg2:       #080F20;
+  --bg3:       #0D1A30;
+  --surface:   #0F1F38;
+  --border:    rgba(46, 134, 222, 0.18);
+  --blue:      #2E86DE;
+  --blue-dim:  #1B5EA0;
+  --blue-glow: rgba(46, 134, 222, 0.25);
+  --gold:      #F0A500;
+  --gold-dim:  rgba(240, 165, 0, 0.15);
+  --white:     #F0F4FF;
+  --muted:     #7A90B0;
+  --radius:    12px;
+  --font-head: 'Barlow Condensed', sans-serif;
+  --font-body: 'Figtree', sans-serif;
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  background: var(--bg);
+  color: var(--white);
+  font-family: var(--font-body);
+  font-size: 16px;
+  line-height: 1.6;
+  overflow-x: hidden;
+}
+
+a { color: inherit; text-decoration: none; }
+img { display: block; max-width: 100%; }
+button { cursor: pointer; border: none; background: none; font-family: inherit; }
+
+/* ── Scrollbar ── */
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: var(--bg); }
+::-webkit-scrollbar-thumb { background: var(--blue-dim); border-radius: 3px; }
+
+/* ── Utility ── */
+.container {
+  max-width: 1140px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+.section {
+  padding: 100px 0;
+}
+
+.label {
+  font-family: var(--font-body);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--blue);
+  margin-bottom: 16px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.label::before {
+  content: '';
+  width: 24px;
+  height: 2px;
+  background: var(--blue);
+  display: block;
+  flex-shrink: 0;
+}
+
+.section-title {
+  font-family: var(--font-head);
+  font-size: clamp(40px, 5vw, 60px);
+  font-weight: 800;
+  line-height: 1.05;
+  letter-spacing: -0.01em;
+  margin-bottom: 20px;
+}
+
+.section-sub {
+  font-size: 17px;
+  color: var(--muted);
+  max-width: 540px;
+  line-height: 1.7;
+}
+
+/* ── Buttons ── */
+.btn-primary {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  background: var(--blue);
+  color: #fff;
+  font-family: var(--font-body);
+  font-size: 15px;
+  font-weight: 600;
+  padding: 14px 28px;
+  border-radius: 8px;
+  transition: background 0.2s, transform 0.2s, box-shadow 0.2s;
+  box-shadow: 0 4px 24px var(--blue-glow);
+}
+.btn-primary:hover {
+  background: #1a72cc;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 32px var(--blue-glow);
+}
+
+.btn-ghost {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: transparent;
+  color: var(--white);
+  font-family: var(--font-body);
+  font-size: 15px;
+  font-weight: 500;
+  padding: 14px 28px;
+  border-radius: 8px;
+  border: 1px solid var(--border);
+  transition: border-color 0.2s, background 0.2s;
+}
+.btn-ghost:hover {
+  border-color: var(--blue);
+  background: var(--blue-glow);
+}
+
+/* ── Grid lines decoration ── */
+.grid-bg {
+  background-image:
+    linear-gradient(var(--border) 1px, transparent 1px),
+    linear-gradient(90deg, var(--border) 1px, transparent 1px);
+  background-size: 60px 60px;
+}
+
+/* ── Animations ── */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(28px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+@keyframes pulse-ring {
+  0%   { transform: scale(1);    opacity: 0.6; }
+  100% { transform: scale(1.6);  opacity: 0; }
+}
+@keyframes ticker {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
+}
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50%       { opacity: 0; }
+}
+
+.fade-up   { animation: fadeUp  0.7s ease both; }
+.delay-1   { animation-delay: 0.1s; }
+.delay-2   { animation-delay: 0.2s; }
+.delay-3   { animation-delay: 0.3s; }
+.delay-4   { animation-delay: 0.4s; }
+.delay-5   { animation-delay: 0.5s; }
+
+/* ── Responsive helpers ── */
+@media (max-width: 768px) {
+  .section { padding: 72px 0; }
+  .hide-mobile { display: none !important; }
+}
