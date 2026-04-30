@@ -7,7 +7,7 @@ const INDUSTRIES = [
   'Legal', 'Fitness / Gym', 'E-Commerce', 'Construction', 'Other',
 ]
 
-export default function Contact() {
+export default function Contact() {h
   const [form, setForm] = useState({
     name: '', business: '', industry: '', email: '', phone: '', plan: '', message: ''
   })
@@ -20,7 +20,7 @@ export default function Contact() {
     e.preventDefault()
     setLoading(true)
     try {
-      const res = await fetch('https://formspree.io/f/YOUR_FORM_ID', {
+      const res = await fetch('https://formspree.io/f/mvzdjqlv', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
         body: JSON.stringify(form)
@@ -28,10 +28,10 @@ export default function Contact() {
       if (res.ok) {
         setSent(true)
       } else {
-        alert('Something went wrong. Please email us directly at zach@fayeenterprises.com')
+        alert('Something went wrong. Please email us directly at fayeenterprisesllc25@gmail.com')
       }
     } catch {
-      alert('Something went wrong. Please email us directly at zach@fayeenterprises.com')
+      alert('Something went wrong. Please email us directly at fayeenterprisesllc25@gmail.com')
     }
     setLoading(false)
   }
@@ -74,7 +74,7 @@ export default function Contact() {
             <div className={styles.contact}>
               <div className={styles.contactItem}>
                 <span className={styles.contactIcon}>✉️</span>
-                <span>zach@fayeenterprises.com</span>
+                <span>fayeenterprisesllc25@gmail.com</span>
               </div>
               <div className={styles.contactItem}>
                 <span className={styles.contactIcon}>🏢</span>
