@@ -26,7 +26,7 @@ export default function Footer() {
             <div className={styles.linkCol}>
               <div className={styles.colTitle}>Company</div>
               <a href="#contact">Contact Us</a>
-              <a href="mailto:zach@fayeenterprises.com">Email Zach</a>
+              <a href="mailto:fayeenterprisesllc25@gmail.com">Email Zach</a>
             </div>
           </div>
         </div>
