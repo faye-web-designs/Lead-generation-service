@@ -1,7 +1,9 @@
-import styles from './Pricing.module.css'
+import { useState } from 'react';
+import styles from './Pricing.module.css';
 
 const PLANS = [
   {
+    id: 'pilot',
     name: 'Pilot',
     price: '$400',
     period: 'one time',
@@ -20,6 +22,7 @@ const PLANS = [
     ctaStyle: 'ghost',
   },
   {
+    id: 'growth',
     name: 'Growth',
     price: '$1,500',
     period: '/ month',
@@ -39,6 +42,7 @@ const PLANS = [
     ctaStyle: 'primary',
   },
   {
+    id: 'pro',
     name: 'Pro',
     price: '$2,000',
     period: '/ month',
@@ -57,9 +61,33 @@ const PLANS = [
     cta: 'Get Started',
     ctaStyle: 'ghost',
   },
-]
+];
 
 export default function Pricing() {
+  const [loadingPlan, setLoadingPlan] = useState(null);
+
+  async function handleCheckout(planId) {
+    setLoadingPlan(planId);
+    try {
+      const res = await fetch('/api/checkout', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ plan: planId }),
+      });
+      const data = await res.json();
+      if (data.url) {
+        window.location.href = data.url;
+      } else {
+        alert('Something went wrong. Please try again.');
+        setLoadingPlan(null);
+      }
+    } catch (err) {
+      console.error(err);
+      alert('Something went wrong. Please try again.');
+      setLoadingPlan(null);
+    }
+  }
+
   return (
     <section className={`section ${styles.wrap}`} id="pricing">
       <div className="container">
@@ -97,12 +125,14 @@ export default function Pricing() {
                   </li>
                 ))}
               </ul>
-              <a
-                href="#contact"
+              <button
+                onClick={() => handleCheckout(p.id)}
+                disabled={loadingPlan === p.id}
                 className={p.ctaStyle === 'primary' ? `btn-primary ${styles.cardCta}` : `btn-ghost ${styles.cardCta}`}
+                style={{ cursor: loadingPlan === p.id ? 'wait' : 'pointer', border: 'none' }}
               >
-                {p.cta}
-              </a>
+                {loadingPlan === p.id ? 'Redirecting...' : p.cta}
+              </button>
             </div>
           ))}
         </div>
