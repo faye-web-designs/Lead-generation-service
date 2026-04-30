@@ -1,0 +1,107 @@
+.wrap { background: var(--bg); }
+
+.grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 80px;
+  align-items: start;
+}
+
+.h2 { font-size: clamp(32px, 3.5vw, 52px); }
+.accent { color: var(--blue); }
+
+.sub {
+  font-size: 16px; color: var(--muted); line-height: 1.7; margin-bottom: 32px;
+}
+
+.bullets { display: flex; flex-direction: column; gap: 14px; margin-bottom: 40px; }
+
+.bullet {
+  display: flex; align-items: center; gap: 12px;
+  font-size: 15px; color: var(--white);
+}
+
+.contact { display: flex; flex-direction: column; gap: 12px; }
+
+.contactItem {
+  display: flex; align-items: center; gap: 12px;
+  font-size: 14px; color: var(--muted);
+}
+
+.contactIcon { font-size: 18px; }
+
+.right {
+  background: var(--bg3);
+  border: 1px solid var(--border);
+  border-radius: 20px;
+  overflow: hidden;
+}
+
+.form { padding: 36px; }
+
+.formTitle {
+  font-family: var(--font-head);
+  font-size: 26px; font-weight: 700;
+  color: var(--white);
+  margin-bottom: 24px; letter-spacing: 0.01em;
+}
+
+.row {
+  display: grid; grid-template-columns: 1fr 1fr;
+  gap: 16px; margin-bottom: 16px;
+}
+
+.field {
+  display: flex; flex-direction: column; gap: 7px; margin-bottom: 16px;
+}
+.row .field { margin-bottom: 0; }
+
+.label {
+  font-size: 12px; font-weight: 600; color: var(--muted);
+  letter-spacing: 0.04em; text-transform: uppercase;
+}
+
+.input, .select, .textarea {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  color: var(--white);
+  font-family: var(--font-body);
+  font-size: 14px;
+  padding: 12px 14px;
+  outline: none; width: 100%;
+  transition: border-color 0.2s, box-shadow 0.2s;
+  -webkit-appearance: none;
+}
+
+.input::placeholder, .textarea::placeholder { color: rgba(122,144,176,0.5); }
+
+.input:focus, .select:focus, .textarea:focus {
+  border-color: var(--blue);
+  box-shadow: 0 0 0 3px var(--blue-glow);
+}
+
+.select {
+  background-image: url("data:image/svg+xml,%3Csvg width='12' height='8' viewBox='0 0 12 8' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%237A90B0' stroke-width='1.5' stroke-linecap='round'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 12px center;
+  padding-right: 36px; cursor: pointer;
+}
+
+.textarea { resize: vertical; min-height: 80px; }
+.submit { width: 100%; justify-content: center; margin-bottom: 12px; }
+.fine { text-align: center; font-size: 12px; color: var(--muted); }
+
+.successBox { padding: 60px 40px; text-align: center; }
+.successIcon { font-size: 48px; margin-bottom: 20px; }
+.successTitle {
+  font-family: var(--font-head); font-size: 30px; font-weight: 700;
+  color: var(--white); margin-bottom: 12px;
+}
+.successText { font-size: 15px; color: var(--muted); line-height: 1.7; }
+
+@media (max-width: 900px) {
+  .grid { grid-template-columns: 1fr; gap: 48px; }
+  .row  { grid-template-columns: 1fr; }
+  .form { padding: 28px 20px; }
+}
