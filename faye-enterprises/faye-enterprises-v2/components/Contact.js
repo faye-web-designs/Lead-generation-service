@@ -7,7 +7,7 @@ const INDUSTRIES = [
   'Legal', 'Fitness / Gym', 'E-Commerce', 'Construction', 'Other',
 ]
 
-export default function Contact() {h
+export default function Contact() {
   const [form, setForm] = useState({
     name: '', business: '', industry: '', email: '', phone: '', plan: '', message: ''
   })
